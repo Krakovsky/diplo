@@ -1,0 +1,15 @@
+<header class="header">
+	<h1>Components</h1>
+</header>
+<section class="preview">
+	<nav class="nav">
+		<a class="nav__link" routerLink="/bar-chart" routerLinkActive="active">Bar chart</a>
+		<a class="nav__link" routerLink="/doughnut-chart" routerLinkActive="active">Doughnut chart</a>
+		<a class="nav__link" routerLink="/timeline" routerLinkActive="active">Timeline</a>
+		<a class="nav__link" routerLink="/tasksboard" routerLinkActive="active">Tasks board</a>
+		<a class="nav__link" routerLink="/calendar-event" routerLinkActive="active">Calendar events</a>
+	</nav>
+	<div class="content">
+		<router-outlet></router-outlet>
+	</div>
+</section>

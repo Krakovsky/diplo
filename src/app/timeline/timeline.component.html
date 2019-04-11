@@ -1,0 +1,46 @@
+<div class="timeline-form">
+	<h2>Добавить расписание</h2>
+	<div class="timeline-form-wrap">
+		<label class="timeline-form-label">
+			<span class="timeline-form-label__title">Заголовок * :</span>
+			<textarea #textarea_title class="timeline-form-label__textarea" placeholder="Ваш заголовок..."></textarea>
+		</label>
+		<label class="timeline-form-label">
+			<span class="timeline-form-label__title">Описание * :</span>
+			<textarea #textarea_desc class="timeline-form-label__textarea" placeholder="Ваше описание..."></textarea>
+		</label>
+	</div>
+	<div class="timeline-form-wrap">
+		<label class="timeline-form-label">
+			<span class="timeline-form-label__title">Дата * :</span>
+			<textarea #timeline_date class="timeline-form-label__textarea" placeholder="Дата начала..."></textarea>
+		</label>
+		<label class="timeline-form-label">
+			<span class="timeline-form-label__title">Имя класса иконки:</span>
+			<textarea #timelineIconClass class="timeline-form-label__textarea" placeholder="Класс иконки..."></textarea>
+		</label>
+	</div>
+	<div class="timeline-form-wrap">
+		<div class="timeline-form-label">
+			<span class="timeline-form-label__title">Фон иконки:</span>
+			<label *ngFor="let radButton of listColorButtons" class="timeline-form-label-color">
+				<input type="radio" name="colorRadio" value="{{radButton.color}}" (click)="colorKotoriyYaXochu = radButton.color">
+				<span class="timeline-form-color {{radButton.color}}"></span>
+			</label>
+		</div>
+	</div>
+	<button class="btn add-timeline" (click)="addItem(textarea_title.value, textarea_desc.value, colorKotoriyYaXochu, timeline_date.value, timelineIconClass.value)">Добавить</button>
+</div>
+<div class="timeline center-orientation">
+	<div *ngFor="let item of dataTimeline" class="timeline-wrap">
+		<div class="timeline-icon-wrap {{item.bgColorIcon}}">
+			<i class="timeline__icon fa {{item.classIcon}}"></i>
+		</div>
+		<div class="timeline-content">
+			<h2>{{item.title}}</h2>
+			<p>{{item.contentText}}</p>
+			<span class="vertical-date">{{item.date}}</span>
+			<button class="btn red deleteTimeline" (click)="deleteTask(index)">Удалить</button>
+		</div>
+	</div>
+</div>

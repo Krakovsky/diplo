@@ -1,0 +1,60 @@
+<div class="tasks-board">
+	<div class="todo-container tasks-board-container">
+      <div class="list"
+           cdkDropList
+           #todoList="cdkDropList"
+           [cdkDropListData]="todos"
+           [cdkDropListConnectedTo]="[workList, doneList]"
+           (cdkDropListDropped)="onDrop($event)">
+        <div class="tasks-board__name-board">Задачи</div>
+        <div class="tasks-board__add-task">
+        	<textarea #descTask placeholder="Добавить задачу..."></textarea> 
+        	<button (click)='addTask(descTask.value)' class="btn">Добавить</button>
+        </div>
+        <div class="tasks-board__item" *ngFor="let todoItem of todos" cdkDrag>
+        	<div class="tasks-board__task-desc">{{todoItem}}</div>
+        	<div class="tasks-board__task-date">
+        		<i class="fa fa-clock-o"></i>
+        		<span class="tasks-board__task-date__date">{{today | date:"dd.MM.yyyy"}}</span>
+        	</div>
+            <button class="btn tasks-board__remove-btn" (click)='deleteItemTodos(index)'>Удалить</button>
+        </div>
+      </div>
+    </div>
+    <div class="work-container tasks-board-container">
+        <div class="list"
+    	     cdkDropList
+    	     #workList="cdkDropList"
+    	     [cdkDropListData]="inWork"
+    	     [cdkDropListConnectedTo]="[todoList, doneList]"
+    	     (cdkDropListDropped)="onDrop($event)">
+    		<div class="tasks-board__name-board">В работе</div>
+    		<div class="tasks-board__item" *ngFor="let workItem of inWork" cdkDrag>
+    		<div class="tasks-board__task-desc">{{workItem}}</div>
+    		<div class="tasks-board__task-date">
+    			<i class="fa fa-clock-o"></i>
+    			<span class="tasks-board__task-date__date">{{today | date:"dd.MM.yyyy"}}</span>
+    		</div>
+            <button class="btn tasks-board__remove-btn" (click)='deleteItemInWork(index)'>Удалить</button>
+	    	</div>
+	    </div>
+	</div>
+	<div class="done-container tasks-board-container">
+        <div class="list"
+    	     cdkDropList
+    	     #doneList="cdkDropList"
+    	     [cdkDropListData]="completed"
+    	     [cdkDropListConnectedTo]="[todoList, workList]"
+    	     (cdkDropListDropped)="onDrop($event)">
+    		<div class="tasks-board__name-board">Завершено</div>
+    		<div class="tasks-board__item" *ngFor="let completeItem of completed" cdkDrag>
+    		<div class="tasks-board__task-desc">{{completeItem}}</div>
+    		<div class="tasks-board__task-date">
+    			<i class="fa fa-clock-o"></i>
+    			<span class="tasks-board__task-date__date">{{today | date:"dd.MM.yyyy"}}</span>
+    		</div>
+            <button class="btn tasks-board__remove-btn" (click)='deleteItemCompleted(index)'>Удалить</button>
+	    	</div>
+	    </div>
+	</div>
+</div>
