@@ -24,14 +24,28 @@ export class CalendarEventsComponent implements OnInit {
 	];
 
 	handleDateClick(arg) {
-		if (confirm('Would you like to add an event to ' + arg.dateStr + ' ?')) {
-			this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-				title: 'New Event',
-				start: arg.date,
-				allDay: arg.allDay
-			})
+		this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
+			title: prompt("Добавить событие:", ''),
+			start: arg.date,
+			allDay: arg.allDay
+		})
+		console.log(arg)
+	}
+
+	updateEvent(model: any) {
+		model = {
+			event: {
+				id: model.event.id,
+				start: model.event.start,
+				end: model.event.end,
+				title: model.event.title
+				// other params
+			},
+			duration: {
+				_data: model.duration._data
+			}
 		}
-		console.log(this.calendarEvents)
+		console.log(1)
 	}
 
 	ngOnInit(){

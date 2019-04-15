@@ -34,11 +34,16 @@ export class TasksboardComponent implements OnInit {
       moveItemInArray(event.container.data,
         event.previousIndex,
         event.currentIndex);
+      console.log("Задачи:", this.todos);
+      console.log("В работе:", this.inWork);
+      console.log("Завершено:", this.completed);
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex, event.currentIndex);
-      console.log(event.previousContainer.data);
+      console.log("Задачи:", this.todos);
+      console.log("В работе:", this.inWork);
+      console.log("Завершено:", this.completed);
     }
   }
 
