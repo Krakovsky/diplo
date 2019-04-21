@@ -67,7 +67,7 @@ export class TasksboardComponent implements OnInit {
       alert("Введите описание задачи");
     } else {
       this.todos.push(title);
-      console.log(this.todos);
+      console.log("Задачи:", this.todos);
     }
   }
 

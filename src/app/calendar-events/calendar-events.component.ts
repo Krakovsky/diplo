@@ -19,17 +19,22 @@ export class CalendarEventsComponent implements OnInit {
 
 	calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin];
 	calendarWeekends = true;
-	calendarEvents: EventInput[] = [
-		{ title: 'Event Now', start: new Date() }
-	];
+	calendarEvents: EventInput[] = [];
 
 	handleDateClick(arg) {
-		this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
-			title: prompt("Добавить событие:", ''),
-			start: arg.date,
-			allDay: arg.allDay
-		})
-		console.log(arg)
+		var valueEvent = prompt("Добавить событие:", '');
+		if (valueEvent) {
+			this.calendarEvents = this.calendarEvents.concat({ // add new event data. must create new array
+				title: valueEvent,
+				start: arg.date,
+				allDay: arg.allDay,
+			})
+		} else if (valueEvent === null) {
+			alert("Вы отменили ввод");
+		} else {
+			alert("Введите событие");
+		}
+		console.log(this.calendarEvents);
 	}
 
 	updateEvent(model: any) {
@@ -38,14 +43,10 @@ export class CalendarEventsComponent implements OnInit {
 				id: model.event.id,
 				start: model.event.start,
 				end: model.event.end,
-				title: model.event.title
-				// other params
-			},
-			duration: {
-				_data: model.duration._data
+				title: model.event.title,
 			}
 		}
-		console.log(1)
+		console.log(this.calendarEvents)
 	}
 
 	ngOnInit(){

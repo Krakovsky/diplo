@@ -2,6 +2,8 @@
     <canvas baseChart
 				    [data]="doughnutChartData"
 				    [labels]="doughnutChartLabels"
-				    [chartType]="doughnutChartType">
+				    [chartType]="doughnutChartType"
+				    [options]="doughnutChartOptions"
+				    (chartClick)="chartClicked($event)">
     </canvas>
 </div>

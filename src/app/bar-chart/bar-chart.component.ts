@@ -12,7 +12,12 @@ export class BarChartComponent implements OnInit {
 
 	public barChartOptions = {
 		scaleShowVerticalLines: false,
-		responsive: true
+		responsive: true,
+		title: {
+			display: true,
+			text: 'Курс валют за последние 7 лет',
+			fontSize: 14
+		}
 	};
 	public barChartLabels = ['2013', '2014', '2015', '2016', '2017', '2018', '2019'];
 	public barChartType = 'bar';
@@ -23,8 +28,8 @@ export class BarChartComponent implements OnInit {
 		{data: [2.52, 3.72, 5.79, 6.48, 7.05, 7.54, 7.18], label: 'Курс злотых'},
 	];
 
-	public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event);
+  public chartClicked(e:any):void {
+    console.log(e);
   }
 
 	ngOnInit() {

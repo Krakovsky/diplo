@@ -9,6 +9,8 @@
   [plugins]="calendarPlugins"
   [weekends]="calendarWeekends"
   [events]="calendarEvents"
+  [editable]="true"
+  [selectable]="true"
   (dateClick)="handleDateClick($event)"
   (eventDrop)="updateEvent($event)">
 </full-calendar>

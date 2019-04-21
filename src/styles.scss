@@ -7,6 +7,13 @@ $fa-font-path : '../node_modules/font-awesome/fonts';
 @import '~@fullcalendar/timegrid/main.css';
 @charset "UTF-8";
 
+
+.fc-day-header {
+  color: #676a6c;
+  padding: 4px 0 !important;
+  font-weight: bold;
+}
+
 /**
  * modified version of normalize.css 3.0.2
  * http://necolas.github.io/normalize.css/
